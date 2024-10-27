@@ -9,5 +9,23 @@
         android:id="@+id/loginFragment"
         android:name="com.cs407.forgeyourdiet.LoginFragment"
         android:label="Login"
-        tools:layout="@layout/login_fragment"/>
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_loginFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/homepageFragment"
+        android:name="com.cs407.forgeyourdiet.HomePageFragment"
+        android:label="Homepage"
+        tools:layout="@layout/fragment_home_page">
+        <action
+            android:id="@+id/action_noteListFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/homepageFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>
