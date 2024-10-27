@@ -33,7 +33,7 @@ class HomePageFragment : Fragment() {
         val calorieCircle = view.findViewById<View>(R.id.calorieCircle)
         val calorieValue = calorieCircle.findViewById<TextView>(R.id.currentCaloriesText)
         val calorieGoal = calorieCircle.findViewById<TextView>(R.id.calorieGoalText)
-        setProgressBarColor(calorieCircle, R.color.cal)
+        //setProgressBarColor(calorieCircle, R.color.cal)
 
         // Set up protein bar
         val proteinContainer = view.findViewById<View>(R.id.proteinContainer)
