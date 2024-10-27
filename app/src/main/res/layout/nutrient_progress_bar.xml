@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:background="@android:color/transparent">
+
+    <TextView
+        android:id="@+id/nutrientLabel"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="Nutrient"
+        android:textSize="16sp"
+        android:textColor="@android:color/black" />
+
+    <ProgressBar
+        android:id="@+id/nutrientProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_weight="1"
+        android:indeterminate="false"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:progress="0"
+        android:max="100"
+        android:progressDrawable="@drawable/custom_progress_bar" />
+
+    <TextView
+        android:id="@+id/nutrientValue"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|end"
+        android:text="0 / 100g"
+        android:textSize="16sp"
+        android:textColor="@android:color/black" />
+</LinearLayout>
