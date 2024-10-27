@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">ForgeYourDiet</string>
+
     <string name="title">Forge Your Diet</string>
     <string name="greeting">Welcome to Forge Your Diet</string>
     <string name="email_address_or_username">Email Address or Username</string>
@@ -8,4 +9,10 @@
     <string name="enter_your_password">Enter your password\n</string>
     <string name="sign_in">Login</string>
     <string name="sign_up">Sign up\n</string>
+
+    <string name="protein">Protein</string>
+    <string name="carbs">Carbs</string>
+    <string name="fat">Fat</string>
+    <string name="calories">Calories</string>
+
 </resources>
