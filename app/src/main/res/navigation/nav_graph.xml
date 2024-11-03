@@ -23,9 +23,17 @@
         android:label="Homepage"
         tools:layout="@layout/fragment_home_page">
         <action
-            android:id="@+id/action_noteListFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
+            android:id="@+id/action_homepageFragment_to_nutritionSummaryFragment"
+            app:destination="@id/nutritionSummaryFragment"
             app:popUpTo="@id/homepageFragment"
             app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nutritionSummaryFragment"
+        android:name="com.cs407.forgeyourdiet.NutritionSummaryFragment"
+        android:label="NutritionSummary"
+        tools:layout="@layout/nutrition_summary">
+
     </fragment>
 </navigation>

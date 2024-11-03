@@ -1,0 +1,32 @@
+<!-- res/layout/status_box.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="@android:color/transparent"
+    android:layout_margin="4dp">
+
+    <TextView
+        android:id="@+id/boxTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/boxValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/boxDifference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#000000" />
+</LinearLayout>
