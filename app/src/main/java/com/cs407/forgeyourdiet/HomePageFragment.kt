@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 
 class HomePageFragment : Fragment() {
 
@@ -27,7 +28,7 @@ class HomePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        userStateViewModel = ViewModelProvider(this).get(NutritionViewModel::class.java)
+        userStateViewModel = ViewModelProvider(requireActivity()).get(NutritionViewModel::class.java)
 
         // Initialize calorie circle view
         val calorieCircle = view.findViewById<View>(R.id.calorieCircle)
@@ -69,6 +70,20 @@ class HomePageFragment : Fragment() {
             carbsValue.text = "${progress.currentCarbs} / ${progress.carbGoal} g"
             fatProgressBar.progress = progress.currentFat
             fatValue.text = "${progress.currentFat} / ${progress.fatGoal} g"
+        }
+
+        // navigate to certain page
+        calorieCircle.setOnClickListener{
+            findNavController().navigate(R.id.action_homepageFragment_to_nutritionSummaryFragment)
+        }
+        proteinContainer.setOnClickListener{
+            findNavController().navigate(R.id.action_homepageFragment_to_nutritionSummaryFragment)
+        }
+        carbsContainer.setOnClickListener{
+            findNavController().navigate(R.id.action_homepageFragment_to_nutritionSummaryFragment)
+        }
+        fatContainer.setOnClickListener{
+            findNavController().navigate(R.id.action_homepageFragment_to_nutritionSummaryFragment)
         }
     }
 
