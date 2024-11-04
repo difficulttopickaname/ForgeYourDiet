@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 
 class HomePageFragment : Fragment() {
 
@@ -69,6 +70,12 @@ class HomePageFragment : Fragment() {
             carbsValue.text = "${progress.currentCarbs} / ${progress.carbGoal} g"
             fatProgressBar.progress = progress.currentFat
             fatValue.text = "${progress.currentFat} / ${progress.fatGoal} g"
+        }
+
+        // clean your fridge part
+        val cleanYourFridge = view.findViewById<TextView>(R.id.cleanYourFridgeText)
+        cleanYourFridge.setOnClickListener {
+            findNavController().navigate(R.id.action_homepageFragment_to_cleanYourFridgeFragment)
         }
     }
 

@@ -27,5 +27,25 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/homepageFragment"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_homepageFragment_to_cleanYourFridgeFragment"
+            app:destination="@id/cleanYourFridgeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/cleanYourFridgeFragment"
+        android:name="com.cs407.forgeyourdiet.CleanYourFridgeFragment"
+        android:label="CleanYourFridgeFragment" >
+        <action
+            android:id="@+id/action_cleanYourFridgeFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment" />
+        <action
+            android:id="@+id/action_cleanYourFridgeFragment_to_mealDetailFragment"
+            app:destination="@id/mealDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mealDetailFragment"
+        android:name="com.cs407.forgeyourdiet.MealDetailFragment"
+        android:label="Meal Detail"
+        tools:layout="@layout/fragment_meal_detail" />
+
 </navigation>
