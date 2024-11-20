@@ -36,27 +36,31 @@ class NutritionSummaryFragment: Fragment() {
         carbohydratesBox = view.findViewById(R.id.carbohydratesBox)
         fatBox = view.findViewById(R.id.fatBox)
 
+        titleImplement()
         // Observe ViewModel for data changes
+        // TODO: change logic of observation to cache or other observation
         nutritionViewModel.userProgress.observe(viewLifecycleOwner) { progress ->
             updateUI(progress)
         }
     }
 
+    private fun titleImplement(){
+        caloriesBox.findViewById<TextView>(R.id.boxTitle).text = getString(R.string.calories)
+        proteinBox.findViewById<TextView>(R.id.boxTitle).text = getString(R.string.protein)
+        carbohydratesBox.findViewById<TextView>(R.id.boxTitle).text = getString(R.string.carbs)
+        fatBox.findViewById<TextView>(R.id.boxTitle).text = getString(R.string.fat)
+    }
 
     private fun updateUI(progress: UserProgress){
-        caloriesBox.findViewById<TextView>(R.id.boxTitle).text = getString(R.string.calories)
         caloriesBox.findViewById<TextView>(R.id.boxValue).text = "${progress.currentCalories}"
         caloriesBox.findViewById<TextView>(R.id.boxDifference).text = formatDifference(progress.currentCalories - progress.calorieGoal)
 
-        proteinBox.findViewById<TextView>(R.id.boxTitle).text = getString(R.string.protein)
         proteinBox.findViewById<TextView>(R.id.boxValue).text = "${progress.currentProtein}"
         proteinBox.findViewById<TextView>(R.id.boxDifference).text = formatDifference(progress.currentProtein - progress.proteinGoal)
 
-        carbohydratesBox.findViewById<TextView>(R.id.boxTitle).text = getString(R.string.carbs)
         carbohydratesBox.findViewById<TextView>(R.id.boxValue).text = "${progress.currentCarbs}"
         carbohydratesBox.findViewById<TextView>(R.id.boxDifference).text = formatDifference(progress.currentCarbs - progress.carbGoal)
 
-        fatBox.findViewById<TextView>(R.id.boxTitle).text = getString(R.string.fat)
         fatBox.findViewById<TextView>(R.id.boxValue).text = "${progress.currentFat}"
         fatBox.findViewById<TextView>(R.id.boxDifference).text = formatDifference(progress.currentFat - progress.fatGoal)
 
