@@ -22,6 +22,9 @@ class LoginFragment : Fragment() {
 //                .replace(R.id.loginFragment, HomePageFragment()) // Replace with your container ID
 //                .addToBackStack(null)
 //                .commit()
+            // TODO: add signup/login logic
+
+            // TODO: add database integration, consider adding cache
             findNavController().navigate(R.id.action_loginFragment_to_homepageFragment)
         }
 

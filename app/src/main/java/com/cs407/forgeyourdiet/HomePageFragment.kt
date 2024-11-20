@@ -27,7 +27,7 @@ class HomePageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        // TODO: change implementation, abandoning ViewModel
         userStateViewModel = ViewModelProvider(requireActivity()).get(NutritionViewModel::class.java)
 
         // Initialize calorie circle view
