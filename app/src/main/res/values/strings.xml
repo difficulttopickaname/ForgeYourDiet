@@ -3,8 +3,8 @@
 
     <string name="title">Forge Your Diet</string>
     <string name="greeting">Welcome to Forge Your Diet</string>
-    <string name="email_address_or_username">Email Address or Username</string>
-    <string name="enter_email_or_username">Enter your email or username</string>
+    <string name="username">Username</string>
+    <string name="enter_username">Enter your username</string>
     <string name="password">Password</string>
     <string name="enter_your_password">Enter your password\n</string>
     <string name="sign_in">Login</string>

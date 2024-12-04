@@ -46,16 +46,16 @@
         android:layout_marginTop="30dp"
         android:paddingTop="16dp"
         android:paddingBottom="4dp"
-        android:text="@string/email_address_or_username"
+        android:text="@string/username"
         android:textSize="14sp" />
 
     <EditText
-        android:id="@+id/emailEditText"
+        android:id="@+id/userNameEditText"
         android:layout_width="350dp"
         android:layout_height="48dp"
         android:layout_marginLeft="20dp"
         android:background="@drawable/rounded_edittext"
-        android:hint="@string/enter_email_or_username"
+        android:hint="@string/enter_username"
         android:inputType="textEmailAddress"
         android:padding="10dp" />
 

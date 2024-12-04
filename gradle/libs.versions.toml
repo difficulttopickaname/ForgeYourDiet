@@ -20,6 +20,7 @@ roomPaging = "2.6.1"
 roomRuntime = "2.6.1"
 roomRxjava2 = "2.6.1"
 fragmentKtx = "1.8.4"
+jbcrypt = "0.4"
 
 
 [libraries]
@@ -40,6 +41,7 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "roomPaging" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 androidx-room-rxjava2 = { module = "androidx.room:room-rxjava2", version.ref = "roomRxjava2" }
+jbcrypt = { group = "org.mindrot", name = "jbcrypt", version.ref = "jbcrypt" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
