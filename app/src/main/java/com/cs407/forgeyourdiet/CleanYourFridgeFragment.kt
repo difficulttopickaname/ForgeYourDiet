@@ -22,7 +22,7 @@ class CleanYourFridgeFragment : Fragment(), MealAdapter.OnItemClickListener {
     private lateinit var mealAdapter: MealAdapter
 
     // Placeholder list of ingredients (simulating the database)
-    private val userIngredients = listOf("Cheese")
+    private val userIngredients = listOf("beef")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,6 +72,9 @@ class CleanYourFridgeFragment : Fragment(), MealAdapter.OnItemClickListener {
                 "ingredients",
                 ArrayList(meal.originalIngredients)
             ) // Pass original ingredients
+            putInt("mealFat",meal.fat)
+            putInt("mealCarbs",meal.carbs)
+            putInt("mealProtein",meal.protein)
         }
         findNavController().navigate(
             R.id.action_cleanYourFridgeFragment_to_mealDetailFragment,
@@ -92,13 +95,16 @@ class CleanYourFridgeFragment : Fragment(), MealAdapter.OnItemClickListener {
                     val name = row[0]
                     val category = row[1]
                     val calories = row[22].toDoubleOrNull()?.roundToInt() ?: 0
+                    val fat = row[23].toDoubleOrNull()?.roundToInt() ?: 0
+                    val carbs = row[24].toDoubleOrNull()?.roundToInt() ?: 0
+                    val protein = row[25].toDoubleOrNull()?.roundToInt() ?: 0
                     val originalIngredients = row.slice(3..21).filter { it.isNotBlank() }
                     val normalizedIngredients = originalIngredients.map {
                         it.replace(Regex("\\s*\\(.*?\\)"), "").trim().lowercase()
                     }
 
                     val meal =
-                        Meal(name, category, calories, normalizedIngredients, originalIngredients)
+                        Meal(name, category, calories,fat,carbs,protein, normalizedIngredients, originalIngredients)
                     mealList.add(meal)
 
                     // Print the meal to the console
