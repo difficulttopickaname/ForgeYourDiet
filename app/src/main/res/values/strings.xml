@@ -3,8 +3,8 @@
 
     <string name="title">Forge Your Diet</string>
     <string name="greeting">Welcome to Forge Your Diet</string>
-    <string name="email_address_or_username">Email Address or Username</string>
-    <string name="enter_email_or_username">Enter your email or username</string>
+    <string name="username">Username</string>
+    <string name="enter_username">Enter your username</string>
     <string name="password">Password</string>
     <string name="enter_your_password">Enter your password\n</string>
     <string name="sign_in">Login</string>
@@ -15,4 +15,10 @@
     <string name="fat">Fat</string>
     <string name="calories">Calories</string>
 
+    <string name="NutritionSummary_title">Weekly Nutrition Summary</string>
+    <string name="NutritionSummary_log_calories">Log Calories</string>
+    <string name="NutritionSummary_enter_cal">Enter calories for the day</string>
+    <string name="NutritionSummary_log_hint">Keep track of your calorie intake here</string>
+    <string name="NutritionSummary_macro_goal">Select Macronutrient Goal</string>
+    <string name="NutritionSummary_macro_hint">Choose a macronutrient to focus on</string>
 </resources>

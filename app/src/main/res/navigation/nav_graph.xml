@@ -12,9 +12,7 @@
         tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_homepageFragment"
-            app:destination="@id/homepageFragment"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true"/>
+            app:destination="@id/homepageFragment"/>
     </fragment>
 
     <fragment
@@ -23,13 +21,18 @@
         android:label="Homepage"
         tools:layout="@layout/fragment_home_page">
         <action
-            android:id="@+id/action_noteListFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:popUpTo="@id/homepageFragment"
-            app:popUpToInclusive="true"/>
-        <action
+            android:id="@+id/action_homepageFragment_to_nutritionSummaryFragment"
+            app:destination="@id/nutritionSummaryFragment"/>
+      <action
             android:id="@+id/action_homepageFragment_to_cleanYourFridgeFragment"
             app:destination="@id/cleanYourFridgeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nutritionSummaryFragment"
+        android:name="com.cs407.forgeyourdiet.NutritionSummaryFragment"
+        android:label="NutritionSummary"
+        tools:layout="@layout/nutrition_summary">
     </fragment>
     <fragment
         android:id="@+id/cleanYourFridgeFragment"

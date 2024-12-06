@@ -1,0 +1,218 @@
+<!-- res/layout/nutrition_summary_fragment.xml -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="16dp"
+    app:circularflow_radiusInDP="6dp">
+
+    <!-- Header Text -->
+    <TextView
+        android:id="@+id/weeklySummaryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp"
+        android:text="@string/NutritionSummary_title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Nutrition Summary Grid -->
+    <GridLayout
+        android:id="@+id/nutritionGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:rowCount="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weeklySummaryText">
+
+        <!-- Include status box for each nutrient -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/caloriesBox"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            app:cardBackgroundColor="@color/cal"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <include layout="@layout/status_box" />
+
+        </androidx.cardview.widget.CardView>
+        <!-- Protein Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/proteinBox"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            app:cardBackgroundColor="@color/protein"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <include layout="@layout/status_box" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Carbohydrates Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/carbohydratesBox"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            app:cardBackgroundColor="@color/carbs"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <include layout="@layout/status_box" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Fat Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/fatBox"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            app:cardBackgroundColor="@color/fat"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <include layout="@layout/status_box" />
+        </androidx.cardview.widget.CardView>
+    </GridLayout>
+
+    <!-- Log Calories Section Label -->
+    <TextView
+        android:id="@+id/logCaloriesSection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:text="@string/NutritionSummary_log_calories"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nutritionGrid" />
+
+    <!-- Calories Input Field -->
+    <EditText
+        android:id="@+id/caloriesEditText"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="@string/NutritionSummary_enter_cal"
+        android:inputType="number"
+        android:paddingStart="10dp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logCaloriesSection" />
+
+    <TextView
+        android:id="@+id/logCaloriesHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/NutritionSummary_macro_goal"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/caloriesEditText" />
+
+    <!-- Macronutrient Goal Selection Label -->
+    <TextView
+        android:id="@+id/macronutrientGoalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/NutritionSummary_log_hint"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logCaloriesHint" />
+
+    <!-- Macronutrient Goal Radio Group -->
+    <RadioGroup
+        android:id="@+id/macronutrientRadioGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/macronutrientGoalText">
+
+        <RadioButton
+            android:id="@+id/proteinRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/protein" />
+
+        <RadioButton
+            android:id="@+id/carbsRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/carbs" />
+
+        <RadioButton
+            android:id="@+id/fatRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fat" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/macroNutrientHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/NutritionSummary_macro_hint"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/macronutrientRadioGroup" />
+
+    <!-- Action Buttons -->
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/transparent"
+        android:text="Reset"
+        android:textColor="#000000"
+        app:cornerRadius="6dp"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/brown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/macroNutrientHint" />
+
+    <Button
+        android:id="@+id/addFoodButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@android:color/transparent"
+        android:text="Add Food"
+        android:textColor="#000000"
+        app:cornerRadius="6dp"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/brown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resetButton" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/brown"
+        android:text="Save"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addFoodButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
