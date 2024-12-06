@@ -16,7 +16,10 @@
     <string name="calories">Calories</string>
 
     <string name="NutritionSummary_title">Weekly Nutrition Summary</string>
-    <string name="NutritionSummary_log_calories">Log Calories</string>
+    <string name="NutritionSummary_log_calories">Log Calories Goal</string>
+    <string name="NutritionSummary_log_carbs">Log Carbohydrate Goal</string>
+    <string name="NutritionSummary_log_fat">Log Fat Goal</string>
+    <string name="NutritionSummary_log_protein">Log Protein Goal</string>
     <string name="NutritionSummary_enter_cal">Enter calories for the day</string>
     <string name="NutritionSummary_log_hint">Keep track of your calorie intake here</string>
     <string name="NutritionSummary_macro_goal">Select Macronutrient Goal</string>
