@@ -30,6 +30,5 @@
         android:name="com.cs407.forgeyourdiet.NutritionSummaryFragment"
         android:label="NutritionSummary"
         tools:layout="@layout/nutrition_summary">
-
     </fragment>
 </navigation>

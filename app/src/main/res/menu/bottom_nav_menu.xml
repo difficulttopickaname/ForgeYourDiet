@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home_button"
+        android:title="Home"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_clean"
+        android:icon="@drawable/clean_button"
+        android:title="Clean"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_fridge"
+        android:icon="@drawable/fridge"
+        android:title="Fill"
+        app:showAsAction="ifRoom" />
+
+</menu>
