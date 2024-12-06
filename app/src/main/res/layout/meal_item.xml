@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="?attr/selectableItemBackground"
+    android:gravity="center_vertical">
+
+    <!-- Dish Icon on the left -->
+    <ImageView
+        android:id="@+id/dishIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/meal_icon"
+        android:layout_marginEnd="8dp" />
+
+    <!-- Text container for dish name and type -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Dish Name -->
+        <TextView
+            android:id="@+id/mealName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dish Name"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Dish Category -->
+        <TextView
+            android:id="@+id/mealCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cuisine Type"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" />
+    </LinearLayout>
+
+    <!-- Calorie Text -->
+    <TextView
+        android:id="@+id/mealCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="800 cal"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="8dp" />
+
+</LinearLayout>

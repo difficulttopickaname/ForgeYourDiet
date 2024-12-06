@@ -98,6 +98,12 @@ class HomePageFragment : Fragment() {
         fatContainer.setOnClickListener{
             findNavController().navigate(R.id.action_homepageFragment_to_nutritionSummaryFragment)
         }
+
+        // clean your fridge part
+        val cleanYourFridge = view.findViewById<TextView>(R.id.cleanYourFridgeText)
+        cleanYourFridge.setOnClickListener {
+            findNavController().navigate(R.id.action_homepageFragment_to_cleanYourFridgeFragment)
+        }
     }
 
     private fun setProgressBarColor(container: View, colorResId: Int) {
