@@ -3,6 +3,7 @@ package com.cs407.forgeyourdiet
 import android.graphics.PorterDuff
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +13,12 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.cs407.forgeyourdiet.data.UserStatusRepository
 
 class HomePageFragment : Fragment() {
 
     private lateinit var userStateViewModel: NutritionViewModel
+    private lateinit var userViewModel: UserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +31,11 @@ class HomePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // TODO: change implementation, abandoning ViewModel
-        userStateViewModel = ViewModelProvider(requireActivity()).get(NutritionViewModel::class.java)
+        val repository = UserStatusRepository(requireContext())
+        val factory = NutritionViewModelFactory(repository)
+
+        userStateViewModel = ViewModelProvider(this, factory).get(NutritionViewModel::class.java)
+        userViewModel = ViewModelProvider(requireActivity()).get(UserViewModel::class.java)
 
         // Initialize calorie circle view
         val calorieCircle = view.findViewById<View>(R.id.calorieCircle)
@@ -60,18 +67,24 @@ class HomePageFragment : Fragment() {
         fatLabel.text = getString(R.string.fat)
         setProgressBarColor(fatContainer, R.color.fat)
 
+        userStateViewModel.loadUserStatus(userViewModel.userState.value.username) // Replace with actual username
         // Observe ViewModel for data changes
-        userStateViewModel.userProgress.observe(viewLifecycleOwner) { progress ->
-            calorieValue.text = "${progress.currentCalories}"
-            calorieGoal.text = "/ ${progress.calorieGoal} kcal"
-            proteinProgressBar.progress = progress.currentProtein
-            proteinValue.text = "${progress.currentProtein} / ${progress.proteinGoal} g"
-            carbsProgressBar.progress = progress.currentCarbs
-            carbsValue.text = "${progress.currentCarbs} / ${progress.carbGoal} g"
-            fatProgressBar.progress = progress.currentFat
-            fatValue.text = "${progress.currentFat} / ${progress.fatGoal} g"
+        userStateViewModel.userStatus.observe(viewLifecycleOwner) { progress ->
+            if(progress != null) {
+                Log.i("good", "good user status")
+                calorieValue.text = "${progress.currentCalories}"
+                calorieGoal.text = "/ ${progress.calorieGoal} kcal"
+                proteinProgressBar.progress = progress.currentProtein
+                proteinValue.text = "${progress.currentProtein} / ${progress.proteinGoal} g"
+                carbsProgressBar.progress = progress.currentCarbs
+                carbsValue.text = "${progress.currentCarbs} / ${progress.carbsGoal} g"
+                fatProgressBar.progress = progress.currentFat
+                fatValue.text = "${progress.currentFat} / ${progress.fatGoal} g"
+            }
+            else{
+                Log.i("e", "null user stat")
+            }
         }
-
         // navigate to certain page
         calorieCircle.setOnClickListener{
             findNavController().navigate(R.id.action_homepageFragment_to_nutritionSummaryFragment)

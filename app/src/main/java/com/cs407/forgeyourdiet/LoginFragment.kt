@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.cs407.forgeyourdiet.data.AuthRepository
@@ -20,6 +21,8 @@ class LoginFragment : Fragment() {
     private lateinit var loginButton: Button
     private lateinit var signUpButton: Button
     private lateinit var authRepository: AuthRepository
+    private lateinit var userViewModel: UserViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +31,7 @@ class LoginFragment : Fragment() {
         val view = inflater.inflate(R.layout.login_fragment, container, false)
 
         requireContext().deleteDatabase("forge_your_diet_database")
+        userViewModel = ViewModelProvider(requireActivity()).get(UserViewModel::class.java)
 
         usernameEditText = view.findViewById(R.id.userNameEditText)
         passwordEditText = view.findViewById(R.id.passwordEditText)
@@ -49,6 +53,7 @@ class LoginFragment : Fragment() {
             lifecycleScope.launch {
                 val loginSuccessful = authRepository.loginUser(username, password)
                 if (loginSuccessful) {
+                    userViewModel.setUser(UserState(username))
                     navigateToHomepage()
                 } else {
                     Toast.makeText(context, "Invalid username or password", Toast.LENGTH_SHORT).show()
@@ -74,6 +79,7 @@ class LoginFragment : Fragment() {
                     val registrationSuccessful = authRepository.registerUser(username, password)
                     if (registrationSuccessful) {
                         Toast.makeText(context, "User created successfully. Logging in...", Toast.LENGTH_SHORT).show()
+                        userViewModel.setUser(UserState(username))
                         navigateToHomepage()
                     } else {
                         Toast.makeText(context, "Failed to create user. Please try again.", Toast.LENGTH_SHORT).show()
