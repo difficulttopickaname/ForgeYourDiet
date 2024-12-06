@@ -1,21 +1,25 @@
 package com.cs407.forgeyourdiet
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.cs407.forgeyourdiet.data.UserProgress
+import com.cs407.forgeyourdiet.data.UserStatus
+import com.cs407.forgeyourdiet.data.UserStatusRepository
 import org.w3c.dom.Text
 
 class NutritionSummaryFragment: Fragment() {
     private lateinit var nutritionViewModel: NutritionViewModel
+    private lateinit var userViewModel: UserViewModel
     private lateinit var caloriesBox: androidx.cardview.widget.CardView
     private lateinit var proteinBox: androidx.cardview.widget.CardView
     private lateinit var carbohydratesBox: androidx.cardview.widget.CardView
     private lateinit var fatBox: androidx.cardview.widget.CardView
+    private lateinit var username: String
 
 
     override fun onCreateView(
@@ -29,7 +33,13 @@ class NutritionSummaryFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        nutritionViewModel = ViewModelProvider(requireActivity()).get(NutritionViewModel::class.java)
+        val repository = UserStatusRepository(requireContext())
+        val factory = NutritionViewModelFactory(repository)
+
+        nutritionViewModel = ViewModelProvider(this, factory).get(NutritionViewModel::class.java)
+        userViewModel = ViewModelProvider(requireActivity()).get(UserViewModel::class.java)
+        username = userViewModel.userState.value.username
+        nutritionViewModel.loadUserStatus(username)
 
         caloriesBox = view.findViewById(R.id.caloriesBox)
         proteinBox = view.findViewById(R.id.proteinBox)
@@ -39,9 +49,16 @@ class NutritionSummaryFragment: Fragment() {
         titleImplement()
         // Observe ViewModel for data changes
         // TODO: change logic of observation to cache or other observation
-        nutritionViewModel.userProgress.observe(viewLifecycleOwner) { progress ->
-            updateUI(progress)
+        nutritionViewModel.userStatus.observe(viewLifecycleOwner) { userStatus ->
+            if (userStatus != null) {
+                Log.i("good", "good user status")
+                updateUI(userStatus)
+            }
+            else{
+                Log.i("e", "null user status")
+            }
         }
+        nutritionViewModel.loadUserStatus(userViewModel.userState.value.username) // Replace with actual username
     }
 
     private fun titleImplement(){
@@ -51,7 +68,7 @@ class NutritionSummaryFragment: Fragment() {
         fatBox.findViewById<TextView>(R.id.boxTitle).text = getString(R.string.fat)
     }
 
-    private fun updateUI(progress: UserProgress){
+    private fun updateUI(progress: UserStatus){
         caloriesBox.findViewById<TextView>(R.id.boxValue).text = "${progress.currentCalories}"
         caloriesBox.findViewById<TextView>(R.id.boxDifference).text = formatDifference(progress.currentCalories - progress.calorieGoal)
 
@@ -59,7 +76,7 @@ class NutritionSummaryFragment: Fragment() {
         proteinBox.findViewById<TextView>(R.id.boxDifference).text = formatDifference(progress.currentProtein - progress.proteinGoal)
 
         carbohydratesBox.findViewById<TextView>(R.id.boxValue).text = "${progress.currentCarbs}"
-        carbohydratesBox.findViewById<TextView>(R.id.boxDifference).text = formatDifference(progress.currentCarbs - progress.carbGoal)
+        carbohydratesBox.findViewById<TextView>(R.id.boxDifference).text = formatDifference(progress.currentCarbs - progress.carbsGoal)
 
         fatBox.findViewById<TextView>(R.id.boxValue).text = "${progress.currentFat}"
         fatBox.findViewById<TextView>(R.id.boxDifference).text = formatDifference(progress.currentFat - progress.fatGoal)
