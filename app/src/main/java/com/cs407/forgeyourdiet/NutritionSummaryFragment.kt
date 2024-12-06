@@ -58,7 +58,7 @@ class NutritionSummaryFragment: Fragment() {
                 Log.i("e", "null user status")
             }
         }
-        nutritionViewModel.loadUserStatus(userViewModel.userState.value.username) // Replace with actual username
+        nutritionViewModel.loadUserStatus(userViewModel.userState.value.username)
     }
 
     private fun titleImplement(){

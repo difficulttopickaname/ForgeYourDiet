@@ -12,9 +12,7 @@
         tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_homepageFragment"
-            app:destination="@id/homepageFragment"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true"/>
+            app:destination="@id/homepageFragment"/>
     </fragment>
 
     <fragment
@@ -24,9 +22,7 @@
         tools:layout="@layout/fragment_home_page">
         <action
             android:id="@+id/action_homepageFragment_to_nutritionSummaryFragment"
-            app:destination="@id/nutritionSummaryFragment"
-            app:popUpTo="@id/homepageFragment"
-            app:popUpToInclusive="true"/>
+            app:destination="@id/nutritionSummaryFragment"/>
     </fragment>
 
     <fragment
