@@ -33,6 +33,9 @@
         android:name="com.cs407.forgeyourdiet.NutritionSummaryFragment"
         android:label="NutritionSummary"
         tools:layout="@layout/nutrition_summary">
+        <action
+            android:id="@+id/action_nutritionSummaryFragment_to_cleanYourFridgeFragment"
+            app:destination="@id/cleanYourFridgeFragment" />
     </fragment>
     <fragment
         android:id="@+id/cleanYourFridgeFragment"
