@@ -1,5 +1,7 @@
 package com.cs407.forgeyourdiet
 
+import android.graphics.PorterDuff
+import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -54,6 +57,10 @@ class MealDetailFragment : Fragment() {
         updateProgress(view.findViewById(R.id.carbsProgressBar), view.findViewById(R.id.carbsValue), carbsData)
         updateProgress(view.findViewById(R.id.fatProgressBar), view.findViewById(R.id.fatValue), fatData)
 
+        setProgressBarColor(view.findViewById(R.id.proteinProgressBar), R.color.protein)
+        setProgressBarColor(view.findViewById(R.id.carbsProgressBar), R.color.carbs)
+        setProgressBarColor(view.findViewById(R.id.fatProgressBar), R.color.fat)
+
         val context = requireContext()
         val userStatusRepository = UserStatusRepository(context)
 
@@ -100,4 +107,12 @@ class MealDetailFragment : Fragment() {
         progressBar.progress = data.first!!
         valueTextView.text = "${data.first}/${data.second}"
     }
+
+    private fun setProgressBarColor(progressBar: ProgressBar, colorResId: Int) {
+        val layerDrawable = progressBar.progressDrawable as LayerDrawable
+        val clipDrawable = layerDrawable.findDrawableByLayerId(android.R.id.progress)
+        val color = ContextCompat.getColor(requireContext(), colorResId)
+        clipDrawable.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+    }
+
 }
