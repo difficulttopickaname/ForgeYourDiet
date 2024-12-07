@@ -12,7 +12,7 @@
         tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_homepageFragment"
-            app:destination="@id/homepageFragment"/>
+            app:destination="@id/homepageFragment" />
     </fragment>
 
     <fragment
@@ -22,10 +22,14 @@
         tools:layout="@layout/fragment_home_page">
         <action
             android:id="@+id/action_homepageFragment_to_nutritionSummaryFragment"
-            app:destination="@id/nutritionSummaryFragment"/>
-      <action
+            app:destination="@id/nutritionSummaryFragment" />
+        <action
             android:id="@+id/action_homepageFragment_to_cleanYourFridgeFragment"
             app:destination="@id/cleanYourFridgeFragment" />
+        <!-- Add navigation to FillFridgeFragment -->
+        <action
+            android:id="@+id/action_homepageFragment_to_fillFridgeFragment"
+            app:destination="@id/fillFridgeFragment" />
     </fragment>
 
     <fragment
@@ -40,7 +44,7 @@
     <fragment
         android:id="@+id/cleanYourFridgeFragment"
         android:name="com.cs407.forgeyourdiet.CleanYourFridgeFragment"
-        android:label="CleanYourFridgeFragment" >
+        android:label="CleanYourFridgeFragment">
         <action
             android:id="@+id/action_cleanYourFridgeFragment_to_homepageFragment"
             app:destination="@id/homepageFragment" />
@@ -54,4 +58,15 @@
         android:label="Meal Detail"
         tools:layout="@layout/fragment_meal_detail" />
 
+    <!-- Add the FillFridgeFragment -->
+    <fragment
+        android:id="@+id/fillFridgeFragment"
+        android:name="com.cs407.forgeyourdiet.FillFridgeFragment"
+        android:label="Fill Fridge"
+        tools:layout="@layout/fill_your_fridge">
+        <!-- Optional: Add navigation back to homepage -->
+        <action
+            android:id="@+id/action_fillFridgeFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment" />
+    </fragment>
 </navigation>

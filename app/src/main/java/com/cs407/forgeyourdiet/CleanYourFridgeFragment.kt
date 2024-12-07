@@ -4,31 +4,56 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.io.InputStreamReader
 import com.opencsv.CSVReader
+import java.io.File
+import java.io.IOException
 import kotlin.math.roundToInt
 
 class CleanYourFridgeFragment : Fragment(), MealAdapter.OnItemClickListener {
 
     private lateinit var mealAdapter: MealAdapter
 
-    // Placeholder list of ingredients (simulating the database)
-    private val userIngredients = listOf("beef")
+    // Replace the placeholder with a mutable list
+    private val userIngredients = mutableListOf("")
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        loadUserIngredients()
         return inflater.inflate(R.layout.fragment_clean_your_fridge, container, false)
+    }
+
+    private fun loadUserIngredients() {
+        try {
+            // Access the file where ingredients are stored
+            val file = File(requireContext().filesDir, "ingredientsAdded.txt")
+
+            // Check if the file exists before reading
+            if (file.exists()) {
+                val ingredients = file.readLines() // Read all lines from the file
+                userIngredients.addAll(ingredients) // Add each ingredient to the list
+                Log.d("CleanYourFridgeFragment", "Ingredients loaded: $ingredients")
+            } else {
+                Log.d("CleanYourFridgeFragment", "File does not exist: ingredientsAdded.txt")
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+            Toast.makeText(requireContext(), "Error loading ingredients", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
