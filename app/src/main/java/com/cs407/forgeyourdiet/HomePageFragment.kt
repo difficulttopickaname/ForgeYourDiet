@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -102,6 +103,10 @@ class HomePageFragment : Fragment() {
         // clean your fridge part
         val cleanYourFridge = view.findViewById<TextView>(R.id.cleanYourFridgeText)
         cleanYourFridge.setOnClickListener {
+            findNavController().navigate(R.id.action_homepageFragment_to_cleanYourFridgeFragment)
+        }
+
+        view.findViewById<ImageView>(R.id.fridge).setOnClickListener{
             findNavController().navigate(R.id.action_homepageFragment_to_cleanYourFridgeFragment)
         }
     }
