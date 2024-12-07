@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
+    android:id="@+id/nav_graph.xml"
     app:startDestination="@id/loginFragment">
 
     <fragment
@@ -36,8 +36,11 @@
         android:id="@+id/nutritionSummaryFragment"
         android:name="com.cs407.forgeyourdiet.NutritionSummaryFragment"
         android:label="NutritionSummary"
-        tools:layout="@layout/nutrition_summary" />
-
+        tools:layout="@layout/nutrition_summary">
+        <action
+            android:id="@+id/action_nutritionSummaryFragment_to_cleanYourFridgeFragment"
+            app:destination="@id/cleanYourFridgeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cleanYourFridgeFragment"
         android:name="com.cs407.forgeyourdiet.CleanYourFridgeFragment"
@@ -49,7 +52,6 @@
             android:id="@+id/action_cleanYourFridgeFragment_to_mealDetailFragment"
             app:destination="@id/mealDetailFragment" />
     </fragment>
-
     <fragment
         android:id="@+id/mealDetailFragment"
         android:name="com.cs407.forgeyourdiet.MealDetailFragment"

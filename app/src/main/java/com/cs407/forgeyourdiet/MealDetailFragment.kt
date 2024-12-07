@@ -4,13 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.cs407.forgeyourdiet.data.UserStatusRepository
+import kotlinx.coroutines.launch
 import kotlin.math.ceil
 
 class MealDetailFragment : Fragment() {
 
+    private lateinit var userViewModel: UserViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -20,7 +26,7 @@ class MealDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        userViewModel = ViewModelProvider(requireActivity()).get(UserViewModel::class.java)
         // Retrieve arguments
         val mealName = arguments?.getString("mealName")
         val mealCategory = arguments?.getString("mealCategory")
@@ -40,14 +46,53 @@ class MealDetailFragment : Fragment() {
         val roundedCarbs = mealCarbs?.let { ceil(it.toDouble()).toInt() }
         val roundedFat = mealFat?.let { ceil(it.toDouble()).toInt() }
 
-// Use the rounded values
         val proteinData = Pair(roundedProtein, 100)
         val carbsData = Pair(roundedCarbs, 100)
-        val fatData = Pair(roundedFat, 10)
+        val fatData = Pair(roundedFat, 100)
 
         updateProgress(view.findViewById(R.id.proteinProgressBar), view.findViewById(R.id.proteinValue), proteinData)
         updateProgress(view.findViewById(R.id.carbsProgressBar), view.findViewById(R.id.carbsValue), carbsData)
         updateProgress(view.findViewById(R.id.fatProgressBar), view.findViewById(R.id.fatValue), fatData)
+
+        val context = requireContext()
+        val userStatusRepository = UserStatusRepository(context)
+
+        // Assume the username is stored in SharedPreferences or passed as an argument
+        val username = userViewModel.userState.value.username
+
+        view.findViewById<Button>(R.id.button).setOnClickListener {
+            // Print the values to the console
+            println("Total Calories: $mealCalories")
+            println("Fat: $mealFat")
+            println("Carbs: $mealCarbs")
+            println("Protein: $mealProtein")
+
+            // Update the database with the new values
+            lifecycleScope.launch {
+                val userStatus = userStatusRepository.getStatusByUsername(username)
+                if (userStatus != null) {
+                    userStatusRepository.updateStatus(
+                        username = username,
+                        currentCalories = userStatus.currentCalories + (mealCalories ?: 0), // Add to currentCalories
+                        currentProtein = userStatus.currentProtein + (mealProtein ?: 0),   // Add to currentProtein
+                        currentCarbs = userStatus.currentCarbs + (mealCarbs ?: 0),         // Add to currentCarbs
+                        currentFat = userStatus.currentFat + (mealFat ?: 0),               // Add to currentFat
+                        calorieGoal = userStatus.calorieGoal,                              // Keep original goal
+                        proteinGoal = userStatus.proteinGoal,                              // Keep original goal
+                        carbsGoal = userStatus.carbsGoal,                                  // Keep original goal
+                        fatGoal = userStatus.fatGoal                                       // Keep original goal
+                    )
+                    println("Database updated with new values for $username")
+                    println("New Current Calories: ${userStatus.currentCalories + (mealCalories ?: 0)}")
+                    println("New Current Protein: ${userStatus.currentProtein + (mealProtein ?: 0)}")
+                    println("New Current Carbs: ${userStatus.currentCarbs + (mealCarbs ?: 0)}")
+                    println("New Current Fat: ${userStatus.currentFat + (mealFat ?: 0)}")
+                } else {
+                    println("User status not found for username: $username")
+                }
+            }
+
+        }
     }
 
     private fun updateProgress(progressBar: ProgressBar, valueTextView: TextView, data: Pair<Int?, Int>) {

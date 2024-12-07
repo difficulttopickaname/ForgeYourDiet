@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_clean -> {
-                    navController.navigate(R.id.nutritionSummaryFragment)
+                    navController.navigate(R.id.cleanYourFridgeFragment)
                     true
                 }
                 R.id.nav_fridge -> {
