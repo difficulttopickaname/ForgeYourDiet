@@ -21,4 +21,6 @@
     <string name="NutritionSummary_log_hint">Keep track of your calorie intake here</string>
     <string name="NutritionSummary_macro_goal">Select Macronutrient Goal</string>
     <string name="NutritionSummary_macro_hint">Choose a macronutrient to focus on</string>
+
+    <string name="doneButton">Done</string>
 </resources>

@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        val sharedIngredients = mutableListOf("beef")
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main) as NavHostFragment
         val navController = navHostFragment.navController
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
@@ -39,6 +40,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_clean -> {
                     navController.navigate(R.id.nutritionSummaryFragment)
+                    true
+                }
+                R.id.nav_fridge -> {
+                    navController.navigate(R.id.fillFridgeFragment)
                     true
                 }
                 else -> false
