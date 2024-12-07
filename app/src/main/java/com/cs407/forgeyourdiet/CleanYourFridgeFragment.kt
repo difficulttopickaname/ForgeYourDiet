@@ -22,7 +22,7 @@ class CleanYourFridgeFragment : Fragment(), MealAdapter.OnItemClickListener {
     private lateinit var mealAdapter: MealAdapter
 
     // Placeholder list of ingredients (simulating the database)
-    private val userIngredients = listOf("beef")
+    private val userIngredients = listOf("apples", "jb")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
