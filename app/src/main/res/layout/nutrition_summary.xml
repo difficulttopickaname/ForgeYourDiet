@@ -144,6 +144,12 @@
         app:layout_constraintTop_toBottomOf="@id/macronutrientGoalText">
 
         <RadioButton
+            android:id="@+id/caloriesRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calories" />
+
+        <RadioButton
             android:id="@+id/proteinRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -178,7 +184,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="@android:color/transparent"
-        android:text="Reset"
+        android:text="Clear"
         android:textColor="#000000"
         app:cornerRadius="6dp"
         app:strokeWidth="2dp"
@@ -193,7 +199,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="@android:color/transparent"
-        android:text="Add Food"
+        android:text="Add Dish"
         android:textColor="#000000"
         app:cornerRadius="6dp"
         app:strokeWidth="2dp"

@@ -59,6 +59,82 @@ class NutritionViewModel(private val repository: UserStatusRepository) : ViewMod
         }
     }
 
+    fun updateCaloriesGoal(username: String, newCalories: Int) {
+        viewModelScope.launch {
+            val currentStatus = repository.getStatusByUsername(username)
+            if (currentStatus != null) {
+                updateUserStatus(
+                    username = username,
+                    currentCalories = currentStatus.currentCalories,
+                    currentProtein = currentStatus.currentProtein,
+                    currentCarbs = currentStatus.currentCarbs,
+                    currentFat = currentStatus.currentFat,
+                    calorieGoal = newCalories,
+                    proteinGoal = currentStatus.proteinGoal,
+                    carbsGoal = currentStatus.carbsGoal,
+                    fatGoal = currentStatus.fatGoal
+                )
+            }
+        }
+    }
+
+    fun updateProteinGoal(username: String, newProtein: Int) {
+        viewModelScope.launch {
+            val currentStatus = repository.getStatusByUsername(username)
+            if (currentStatus != null) {
+                updateUserStatus(
+                    username = username,
+                    currentCalories = currentStatus.currentCalories,
+                    currentProtein = currentStatus.currentProtein,
+                    currentCarbs = currentStatus.currentCarbs,
+                    currentFat = currentStatus.currentFat,
+                    calorieGoal = currentStatus.calorieGoal,
+                    proteinGoal = newProtein,
+                    carbsGoal = currentStatus.carbsGoal,
+                    fatGoal = currentStatus.fatGoal
+                )
+            }
+        }
+    }
+
+    fun updateCarbsGoal(username: String, newCarbs: Int) {
+        viewModelScope.launch {
+            val currentStatus = repository.getStatusByUsername(username)
+            if (currentStatus != null) {
+                updateUserStatus(
+                    username = username,
+                    currentCalories = currentStatus.currentCalories,
+                    currentProtein = currentStatus.currentProtein,
+                    currentCarbs = currentStatus.currentCarbs,
+                    currentFat = currentStatus.currentFat,
+                    calorieGoal = currentStatus.calorieGoal,
+                    proteinGoal = currentStatus.proteinGoal,
+                    carbsGoal = newCarbs,
+                    fatGoal = currentStatus.fatGoal
+                )
+            }
+        }
+    }
+
+    fun updateFatGoal(username: String, newFat: Int) {
+        viewModelScope.launch {
+            val currentStatus = repository.getStatusByUsername(username)
+            if (currentStatus != null) {
+                updateUserStatus(
+                    username = username,
+                    currentCalories = currentStatus.currentCalories,
+                    currentProtein = currentStatus.currentProtein,
+                    currentCarbs = currentStatus.currentCarbs,
+                    currentFat = currentStatus.currentFat,
+                    calorieGoal = currentStatus.calorieGoal,
+                    proteinGoal = currentStatus.proteinGoal,
+                    carbsGoal = currentStatus.carbsGoal,
+                    fatGoal = newFat
+                )
+            }
+        }
+    }
+
 
     fun upsertUserStatus(userStatus: UserStatus) {
         viewModelScope.launch {
