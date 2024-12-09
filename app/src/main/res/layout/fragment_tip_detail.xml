@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:contentDescription="Back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="8dp" />
+
+        <!-- Counting Calories Section -->
+        <LinearLayout
+            android:id="@+id/countingCaloriesSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Title for Counting Calories -->
+            <TextView
+                android:id="@+id/tipDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Calorie Counting Made Easy"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Content for Counting Calories -->
+            <TextView
+                android:id="@+id/tipDetailContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:lineSpacingExtra="6dp"
+                android:textColor="#333333"
+                android:text="\n\nEat less, exercise more. If only it were that simple!\n\nWhile calorie counting has fallen out of favor, some people still find it to be a useful tool to manage their weight.\n\nStart by determining how many calories you should consume each day. To do so, you need to know how many calories you need to maintain your current weight. Doing this requires a few simple calculations.\n\nFirst, multiply your current weight by 15 — that's roughly the number of calories per pound of body weight needed to maintain your current weight if you are moderately active. Moderately active means getting at least 30 minutes of physical activity a day in the form of exercise (walking at a brisk pace, climbing stairs, or active gardening).\n\nFor example, to lose 1 to 2 pounds a week — a rate that experts consider safe — your food consumption should provide 500 to 1,000 calories less than your total weight-maintenance calories.\n\nMeeting Your Calorie Target:\nHow can you meet your daily calorie target? One approach is to add up the number of calories per serving of all the foods that you eat, and then plan your menus accordingly.\n\nSome people focus on reducing the fat in their eating plan because, at 9 calories per gram, fat by weight contains more than twice as many calories as carbohydrates or proteins (4 calories per gram).\n\nWhichever method you choose, research shows that a regular eating schedule — with meals and snacks planned for certain times each day — makes for the most successful approach." />
+
+        </LinearLayout>
+
+        <!-- Hydration Importance Section -->
+        <LinearLayout
+            android:id="@+id/hydrationImportanceSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Title for Hydration Importance -->
+            <TextView
+                android:id="@+id/tipDetailTitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hydration Importance"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Content for Hydration Importance -->
+            <TextView
+                android:id="@+id/tipDetailContent2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:lineSpacingExtra="6dp"
+                android:textColor="#333333"
+                android:text="\n\nHow much water should you drink a day? Most people need about four to six cups of plain water each day. But it may be surprising to learn that water intake is an individualized number.\n\n
+
+While the daily four-to-six cup rule is for generally healthy people, that amount differs based on how much water they take in from other beverages and food sources. Also, certain health conditions, medications, activity level, and ambient temperature influence total daily water intake.\n\n
+
+Unfortunately, many of us aren't getting enough to drink, especially older adults. We'll help you understand how much water you need to drink in a day to stay healthy.\n\n
+
+Benefits of drinking water:\n
+\u2022 Carrying nutrients and oxygen to your cells\n
+\u2022 Flushing bacteria from your bladder\n
+\u2022 Aiding digestion\n
+\u2022 Preventing constipation\n
+\u2022 Normalizing blood pressure\n
+\u2022 Cushioning joints\n
+\u2022 Protecting organs and tissues\n
+\u2022 Regulating body temperature\n
+\u2022 Maintaining electrolyte (sodium) balance.\n\n
+
+How much daily total water do you need?\n
+For healthy individuals, the average daily water for men is about 15.5 cups and for women about 11.5 cups. That might mean you need only four to six cups of plain water, depending on other fluid sources such as coffee, tea, juice, fruits, and vegetables.\n\n
+
+Other factors that might mean more plain water include:\n
+\u2022 **Activity level:** If you're losing water through sweat because you're exercising, you should increase your water intake. Individuals participating in long stretches of physical activity, such as marathons, often need to replace both water and sodium losses.\n
+\u2022 **Outside temperatures:** You should adjust your water level when the temperatures soar outside. In warmer temperatures, you might feel thirstier faster.\n
+\u2022 **Overall health and medications:** It's possible to take in too much water if you have certain health conditions, such as thyroid disease or kidney, liver, or heart problems; or if you're taking medications that make you retain water, such as nonsteroidal anti-inflammatory drugs (NSAIDs), opiate pain medications, and some antidepressants.\n
+\u2022 **Age:** Older people don't sense thirst as much as they did when they were younger. And that could be a problem if they're on a medication that may cause fluid loss, such as a diuretic.\n\n
+
+How to calculate how much water to drink a day:\n
+As there's no one-size-fits-all answer and water intake is individualized, you should check with your doctor about the right amount for you.\n\n
+
+If you don't drink enough water each day, you risk becoming dehydrated. Warning signs of dehydration include urine that's dark yellow in color, weakness, low blood pressure, dizziness, or confusion.\n\n
+
+Fluids to keep you hydrated:\n
+Water is not your only choice when it comes to hydration. All beverages containing water contribute toward your daily needs. And some people even tout the benefits of milk for hydration.\n\n
+
+And it's a myth that caffeinated beverages or those containing alcohol are dehydrating because they make you urinate. They do, but over the course of the day, the water from these beverages still leads to a net positive contribution to total fluid consumption.\n\n
+
+Of course, there are many reasons why water is still the better choice. Remember, sugary drinks can lead to weight gain and inflammation, which can increase your risk for developing diseases such as diabetes. Too much caffeine can give you the jitters or keep you from sleeping. And alcohol intake should be limited to one drink per day for women, and one to two drinks per day for men.\n\n
+
+Tips for avoiding dehydration:\n
+To ward off dehydration, drink fluids gradually, throughout the day. An easy way to do this is to have a drink at each meal, as well as socially, or with medicine.\n\n
+
+And know that you also get fluids from water-rich foods, such as salads, fruit, and applesauce." />        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
